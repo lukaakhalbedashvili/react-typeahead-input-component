@@ -1,0 +1,54 @@
+$iconWidth: 35px;
+@mixin MainSingleDivElements {
+  margin-bottom: 2%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  margin-bottom: 5%;
+
+  .SingleResultImage {
+    display: flex;
+    align-items: center;
+    margin-left: calc($iconWidth/2);
+    border-radius: 10px;
+    overflow: hidden;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .SingleResultNameAndStatusDiv {
+    background-color: green;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    .SingleResultName {
+      font-size: small;
+      font-weight: 30;
+      color: #aaa6a6;
+    }
+
+    .SingleResultStatus {
+      font-size: medium;
+    }
+    * {
+      margin: 0%;
+      padding: 0%;
+    }
+  }
+}
+.MainSingleResultDiv {
+  opacity: 1;
+  @include MainSingleDivElements;
+  transition: 3.5s;
+}
+
+.MainSingleResultDivUnmounting {
+  opacity: 0;
+  transition: 0.3s;
+
+  @include MainSingleDivElements;
+}
