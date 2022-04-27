@@ -3,14 +3,13 @@ $iconWidth: 35px;
   border: none;
   outline: none;
   position: relative;
-  bottom: 25px;
+  bottom: 45px;
   background-color: white;
   border-radius: 15px;
   box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.1);
 }
 @mixin SearchBarInput {
   font-weight: bold;
-
   width: 100%;
   height: 10vh;
   border: none;

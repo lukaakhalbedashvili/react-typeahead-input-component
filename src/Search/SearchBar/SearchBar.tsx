@@ -1,23 +1,26 @@
-import * as React from 'react'
-import './SearchBar.scss'
-import { CircularProgress } from '@mui/material'
-import { IoIosSearch } from 'react-icons/io'
-import SearchResults from '../SearchResults/SearchResults'
-import classnames from 'classnames'
-
-const SearchBar = () => {
-  const [input, setInput] = React.useState('')
-  console.log(setInput, 'SHEN GAIXARE')
+import * as React from "react";
+import "./SearchBar.scss";
+import { CircularProgress } from "@mui/material";
+import { IoIosSearch } from "react-icons/io";
+import SearchResults from "../SearchResults/SearchResults";
+import classnames from "classnames";
+import { SearchBarProps } from "../../types";
+const SearchBar = (props: SearchBarProps) => {
+  const { value, placeholder, loading, results } = props;
+  const [input, setInput] = React.useState("");
+  React.useEffect(() => {
+    value && setInput(value);
+  }, [value]);
 
   return (
     <div className="MainSearchDiv">
       <div className="SearchBarDiv">
-        {input.length > 0 && (
-          <p className={'SearchIcon'}>
+        {loading && (
+          <p className={"SearchIcon"}>
             <CircularProgress color="inherit" size={18} />
           </p>
         )}
-        {input.length < 1 && <IoIosSearch className="SearchIcon" size={30} />}
+        {!loading && <IoIosSearch className="SearchIcon" size={30} />}
         <input
           className={classnames({
             SearchBarInputFull: input.length > 0,
@@ -26,11 +29,16 @@ const SearchBar = () => {
           spellCheck={false}
           autoComplete="off"
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Searching is easier "
+          value={input}
+          placeholder={placeholder ? placeholder : "Searching is easier"}
           role="search"
           name="search"
         />
-        {input.length > 0 && <p className="SearchBarClearLabel">Clear</p>}
+        {input.length > 0 && (
+          <p className="SearchBarClearLabel" onClick={() => setInput("")}>
+            Clear
+          </p>
+        )}
       </div>
       <div
         className={classnames({
@@ -38,9 +46,9 @@ const SearchBar = () => {
           SearchResultsFull: input.length > 0,
         })}
       >
-        <SearchResults input={input} />
+        <SearchResults results={results} input={input} />
       </div>
     </div>
-  )
-}
-export default SearchBar
+  );
+};
+export default SearchBar;

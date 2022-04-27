@@ -1,12 +1,24 @@
-import * as React from 'react'
-import './SingleSearchResult.scss'
-import classnames from 'classnames'
-const SingleSearchResult = ({ input }: { input: string }) => {
+import * as React from "react";
+import "./SingleSearchResult.scss";
+import classnames from "classnames";
+export interface SearchResult {
+  img: string;
+  title: string;
+  subTitle: string;
+  redirectUrl: string;
+}
+const SingleSearchResult = (props: {
+  key: number;
+  result: SearchResult;
+  input: string;
+}) => {
+  const { redirectUrl, img, subTitle, title } = props.result;
+  console.log(redirectUrl, img, subTitle, title, "title");
   return (
     <div
       className={classnames({
-        MainSingleResultDiv: input.length > 0,
-        MainSingleResultDivUnmounting: input.length < 1,
+        MainSingleResultDiv: props.input.length > 0,
+        MainSingleResultDivUnmounting: props.input.length < 1,
       })}
     >
       <div className="SingleResultImage">
@@ -20,7 +32,7 @@ const SingleSearchResult = ({ input }: { input: string }) => {
         <p className="SingleResultName">saxeli</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SingleSearchResult
+export default SingleSearchResult;

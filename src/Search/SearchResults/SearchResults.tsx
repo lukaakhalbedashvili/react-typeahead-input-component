@@ -1,10 +1,10 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import SingleSearchResult from '../SearchBarSingleResult/SingleSearchResult.module'
-import './SearchResults.scss'
-const SearchResults = ({ input }: { input: string }) => {
-  const test = [1, 2]
+import * as React from "react";
+import classnames from "classnames";
+import SingleSearchResult from "../SearchBarSingleResult/SingleSearchResult.module";
+import "./SearchResults.scss";
+import { Results } from "./../../types";
 
+const SearchResults = ({ results, input }: Results) => {
   return (
     <div
       className={classnames({
@@ -12,10 +12,11 @@ const SearchResults = ({ input }: { input: string }) => {
         SearchResultsFull: input.length > 0,
       })}
     >
-      {test.map((item) => (
-        <SingleSearchResult input={input} key={item} />
-      ))}
+      {results &&
+        results.map((item, index) => (
+          <SingleSearchResult key={index} result={item} input={input} />
+        ))}
     </div>
-  )
-}
-export default SearchResults
+  );
+};
+export default SearchResults;

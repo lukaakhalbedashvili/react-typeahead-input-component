@@ -1,5 +1,12 @@
 $iconWidth: 35px;
 @mixin MainSingleDivElements {
+  &:hover {
+    background-color: #f5f5f5;
+    transition: none;
+    border-radius: 10px;
+    transform: none;
+  }
+
   margin-bottom: 2%;
   width: 90%;
   display: flex;
@@ -19,7 +26,6 @@ $iconWidth: 35px;
     }
   }
   .SingleResultNameAndStatusDiv {
-    background-color: green;
     margin-left: 5%;
     display: flex;
     flex-direction: column;
