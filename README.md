@@ -39,6 +39,8 @@ _onClick_ property takes function and passes _results_ and _payload_ object as a
 
 _payload_ property is the payload that you can use to handle click event. it could be anything you want. e.g _id_, _name_, _email_ etc.
 
+## Example
+
 ```javascript
 import Search from "react-typeahead-input-component";
 
