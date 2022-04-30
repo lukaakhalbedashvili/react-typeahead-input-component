@@ -4,7 +4,7 @@ import SingleSearchResult from "../SearchBarSingleResult/SingleSearchResult.modu
 import "./SearchResults.scss";
 import { Results } from "./../../types";
 
-const SearchResults = ({ results, input }: Results) => {
+const SearchResults = ({ results, input, onClickHandler }: Results) => {
   return (
     <div
       className={classnames({
@@ -14,7 +14,12 @@ const SearchResults = ({ results, input }: Results) => {
     >
       {results &&
         results.map((item, index) => (
-          <SingleSearchResult key={index} result={item} input={input} />
+          <SingleSearchResult
+            key={index}
+            result={item}
+            input={input}
+            onClickHandler={onClickHandler}
+          />
         ))}
     </div>
   );
